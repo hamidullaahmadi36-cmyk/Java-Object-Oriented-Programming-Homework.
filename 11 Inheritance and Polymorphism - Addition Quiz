@@ -1,0 +1,41 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class RepeatAdditionQuiz {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        ArrayList<Integer> answers = new ArrayList<>();
+
+        // Generate two random numbers (0–9)
+        int number1 = (int)(Math.random() * 10);
+        int number2 = (int)(Math.random() * 10);
+
+        int correctAnswer = number1 + number2;
+
+        System.out.print("What is " + number1 + " + " + number2 + "? ");
+
+        while (true) {
+
+            int answer = input.nextInt();
+
+            // Check if repeated answer
+            if (answers.contains(answer)) {
+                System.out.println("You already entered " + answer);
+            } else {
+                answers.add(answer);
+            }
+
+            // Check correctness
+            if (answer == correctAnswer) {
+                System.out.println("Correct!");
+                break;
+            } else {
+                System.out.print("Wrong answer. Try again: ");
+            }
+        }
+
+        input.close();
+    }
+}
