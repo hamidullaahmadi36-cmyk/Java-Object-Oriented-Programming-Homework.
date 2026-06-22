@@ -1,0 +1,50 @@
+import java.util.Scanner;
+
+public class AnalyzeScores {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        int[] scores = new int[100];
+        int count = 0;
+        int sum = 0;
+
+        System.out.println("Enter scores (enter a negative number to end):");
+
+        // Read scores
+        while (count < 100) {
+            int score = input.nextInt();
+
+            if (score < 0) {
+                break;
+            }
+
+            scores[count] = score;
+            sum += score;
+            count++;
+        }
+
+        // Calculate average
+        double average = (double) sum / count;
+
+        int aboveOrEqual = 0;
+        int below = 0;
+
+        // Count scores
+        for (int i = 0; i < count; i++) {
+            if (scores[i] >= average) {
+                aboveOrEqual++;
+            } else {
+                below++;
+            }
+        }
+
+        // Display results
+        System.out.println("Average score: " + average);
+        System.out.println("Number of scores above or equal to the average: " + aboveOrEqual);
+        System.out.println("Number of scores below the average: " + below);
+
+        input.close();
+    }
+}
