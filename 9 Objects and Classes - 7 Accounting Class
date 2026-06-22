@@ -1,0 +1,60 @@
+public class Account {
+
+    // Private data fields
+    private int id = 0;
+    private double balance = 0;
+
+    // No-arg constructor
+    public Account() {
+    }
+
+    // Constructor with id and balance
+    public Account(int id, double balance) {
+        this.id = id;
+        this.balance = balance;
+    }
+
+    // Getters
+    public int getId() {
+        return id;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    // Setters
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
+    // Deposit method
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+        }
+    }
+
+    // Withdraw method
+    public void withdraw(double amount) {
+        if (amount > 0 && amount <= balance) {
+            balance -= amount;
+        }
+    }
+
+    // Test program
+    public static void main(String[] args) {
+
+        Account acc = new Account(1122, 20000);
+
+        acc.deposit(3000);
+        acc.withdraw(2500);
+
+        System.out.println("Account ID: " + acc.getId());
+        System.out.println("Balance: " + acc.getBalance());
+    }
+}
