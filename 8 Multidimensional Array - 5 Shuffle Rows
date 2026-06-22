@@ -1,0 +1,44 @@
+public class ShuffleRows {
+
+    // Method to shuffle the rows of a 2D array
+    public static void shuffle(int[][] m) {
+        for (int i = 0; i < m.length; i++) {
+            // Generate a random row index
+            int randomRow = (int) (Math.random() * m.length);
+
+            // Swap row i with randomRow
+            int[] temp = m[i];
+            m[i] = m[randomRow];
+            m[randomRow] = temp;
+        }
+    }
+
+    // Method to display the matrix
+    public static void printMatrix(int[][] m) {
+        for (int i = 0; i < m.length; i++) {
+            for (int j = 0; j < m[i].length; j++) {
+                System.out.print(m[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    public static void main(String[] args) {
+
+        int[][] m = {
+            {1, 2},
+            {3, 4},
+            {5, 6},
+            {7, 8},
+            {9, 10}
+        };
+
+        System.out.println("Original matrix:");
+        printMatrix(m);
+
+        shuffle(m);
+
+        System.out.println("\nShuffled matrix:");
+        printMatrix(m);
+    }
+}
