@@ -1,0 +1,51 @@
+import java.util.ArrayList;
+import java.util.Date;
+
+// Simple Loan class
+class Loan {
+    private double amount;
+
+    public Loan(double amount) {
+        this.amount = amount;
+    }
+
+    public String toString() {
+        return "Loan amount: " + amount;
+    }
+}
+
+// Simple Circle class
+class Circle {
+    private double radius;
+
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+
+    public double getArea() {
+        return Math.PI * radius * radius;
+    }
+
+    public String toString() {
+        return "Circle radius: " + radius + ", area: " + getArea();
+    }
+}
+
+public class ArrayListObjects {
+
+    public static void main(String[] args) {
+
+        ArrayList<Object> list = new ArrayList<>();
+
+        // Add different object types
+        list.add(new Loan(5000));
+        list.add(new Date());
+        list.add("Hello Java");
+        list.add(new Circle(5));
+
+        // Display all elements
+        for (Object obj : list) {
+            System.out.println(obj);
+        }
+    }
+}
