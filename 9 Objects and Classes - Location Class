@@ -1,0 +1,44 @@
+public class Location {
+
+    // Public data fields (as required)
+    public int row;
+    public int column;
+    public double maxValue;
+
+    // Method to find location of maximum value
+    public static Location locateLargest(double[][] a) {
+
+        Location loc = new Location();
+        loc.maxValue = a[0][0];
+        loc.row = 0;
+        loc.column = 0;
+
+        for (int i = 0; i < a.length; i++) {
+            for (int j = 0; j < a[i].length; j++) {
+
+                if (a[i][j] > loc.maxValue) {
+                    loc.maxValue = a[i][j];
+                    loc.row = i;
+                    loc.column = j;
+                }
+            }
+        }
+
+        return loc;
+    }
+
+    // Test program
+    public static void main(String[] args) {
+
+        double[][] matrix = {
+            {1.5, 2.9, 3.4},
+            {4.2, 9.1, 1.0},
+            {3.3, 7.7, 8.8}
+        };
+
+        Location loc = Location.locateLargest(matrix);
+
+        System.out.println("Max value: " + loc.maxValue);
+        System.out.println("Location: (" + loc.row + ", " + loc.column + ")");
+    }
+}
