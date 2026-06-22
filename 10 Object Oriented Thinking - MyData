@@ -1,0 +1,71 @@
+import java.util.GregorianCalendar;
+
+public class MyDate {
+
+    // Data fields (month is 0-based)
+    private int year;
+    private int month;
+    private int day;
+
+    // No-arg constructor (current date)
+    public MyDate() {
+        setDate(System.currentTimeMillis());
+    }
+
+    // Constructor with elapsed time since 1970
+    public MyDate(long elapsedTime) {
+        setDate(elapsedTime);
+    }
+
+    // Constructor with specific year, month, day
+    public MyDate(int year, int month, int day) {
+        this.year = year;
+        this.month = month;
+        this.day = day;
+    }
+
+    // Set date using elapsed time
+    public void setDate(long elapsedTime) {
+        GregorianCalendar calendar = new GregorianCalendar();
+        calendar.setTimeInMillis(elapsedTime);
+
+        this.year = calendar.get(GregorianCalendar.YEAR);
+        this.month = calendar.get(GregorianCalendar.MONTH); // 0-based
+        this.day = calendar.get(GregorianCalendar.DAY_OF_MONTH);
+    }
+
+    // Getters
+    public int getYear() {
+        return year;
+    }
+
+    public int getMonth() {
+        return month;
+    }
+
+    public int getDay() {
+        return day;
+    }
+
+    // Test program
+    public static void main(String[] args) {
+
+        // Current date
+        MyDate d1 = new MyDate();
+
+        // Specific elapsed time
+        MyDate d2 = new MyDate(1234567898765L);
+
+        // Custom date
+        MyDate d3 = new MyDate(2026, 5, 22);
+
+        System.out.println("Current Date: " +
+                d1.getYear() + "-" + d1.getMonth() + "-" + d1.getDay());
+
+        System.out.println("Elapsed Time Date: " +
+                d2.getYear() + "-" + d2.getMonth() + "-" + d2.getDay());
+
+        System.out.println("Custom Date: " +
+                d3.getYear() + "-" + d3.getMonth() + "-" + d3.getDay());
+    }
+}
