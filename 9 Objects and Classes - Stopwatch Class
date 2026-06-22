@@ -1,0 +1,53 @@
+public class StopWatch {
+
+    // Private data fields
+    private long startTime;
+    private long endTime;
+
+    // No-arg constructor (start immediately)
+    public StopWatch() {
+        this.startTime = System.currentTimeMillis();
+    }
+
+    // Start/reset stopwatch
+    public void start() {
+        startTime = System.currentTimeMillis();
+    }
+
+    // Stop stopwatch
+    public void stop() {
+        endTime = System.currentTimeMillis();
+    }
+
+    // Get elapsed time in milliseconds
+    public long getElapsedTime() {
+        return endTime - startTime;
+    }
+
+    // Getter methods
+    public long getStartTime() {
+        return startTime;
+    }
+
+    public long getEndTime() {
+        return endTime;
+    }
+
+    // Test program inside same class
+    public static void main(String[] args) {
+
+        StopWatch sw = new StopWatch();
+
+        // Simulate some processing time
+        long sum = 0;
+        for (long i = 0; i < 100000000; i++) {
+            sum += i;
+        }
+
+        sw.stop();
+
+        System.out.println("Start time: " + sw.getStartTime());
+        System.out.println("End time: " + sw.getEndTime());
+        System.out.println("Elapsed time: " + sw.getElapsedTime() + " ms");
+    }
+}
