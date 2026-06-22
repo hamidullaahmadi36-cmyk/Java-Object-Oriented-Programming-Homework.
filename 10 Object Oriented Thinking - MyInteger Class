@@ -1,0 +1,106 @@
+public class MyInteger {
+
+    private int value;
+
+    // Constructor
+    public MyInteger(int value) {
+        this.value = value;
+    }
+
+    // Getter
+    public int getValue() {
+        return value;
+    }
+
+    // Instance methods
+    public boolean isEven() {
+        return value % 2 == 0;
+    }
+
+    public boolean isOdd() {
+        return value % 2 != 0;
+    }
+
+    public boolean isPrime() {
+        return isPrime(value);
+    }
+
+    // Static methods (int version)
+    public static boolean isEven(int n) {
+        return n % 2 == 0;
+    }
+
+    public static boolean isOdd(int n) {
+        return n % 2 != 0;
+    }
+
+    public static boolean isPrime(int n) {
+        if (n < 2) return false;
+        for (int i = 2; i <= Math.sqrt(n); i++) {
+            if (n % i == 0) return false;
+        }
+        return true;
+    }
+
+    // Static methods (MyInteger version)
+    public static boolean isEven(MyInteger n) {
+        return n.isEven();
+    }
+
+    public static boolean isOdd(MyInteger n) {
+        return n.isOdd();
+    }
+
+    public static boolean isPrime(MyInteger n) {
+        return n.isPrime();
+    }
+
+    // equals methods
+    public boolean equals(int n) {
+        return this.value == n;
+    }
+
+    public boolean equals(MyInteger n) {
+        return this.value == n.value;
+    }
+
+    // parseInt from char array
+    public static int parseInt(char[] chars) {
+        int result = 0;
+
+        for (int i = 0; i < chars.length; i++) {
+            result = result * 10 + (chars[i] - '0');
+        }
+
+        return result;
+    }
+
+    // parseInt from String
+    public static int parseInt(String s) {
+        return parseInt(s.toCharArray());
+    }
+
+    // Test program
+    public static void main(String[] args) {
+
+        MyInteger num = new MyInteger(29);
+
+        System.out.println("Value: " + num.getValue());
+        System.out.println("isEven: " + num.isEven());
+        System.out.println("isOdd: " + num.isOdd());
+        System.out.println("isPrime: " + num.isPrime());
+
+        System.out.println("equals 29: " + num.equals(29));
+        System.out.println("equals 10: " + num.equals(10));
+
+        System.out.println("Static isPrime(17): " + MyInteger.isPrime(17));
+
+        MyInteger num2 = new MyInteger(10);
+        System.out.println("Static isEven(MyInteger): " + MyInteger.isEven(num2));
+
+        char[] digits = {'1', '2', '3', '4'};
+        System.out.println("parseInt(char[]): " + MyInteger.parseInt(digits));
+
+        System.out.println("parseInt(String): " + MyInteger.parseInt("5678"));
+    }
+}
