@@ -1,0 +1,67 @@
+import java.util.ArrayList;
+
+class StackOfIntegers {
+
+    private ArrayList<Integer> elements = new ArrayList<>();
+
+    public void push(int value) {
+        elements.add(value);
+    }
+
+    public int pop() {
+        return elements.remove(elements.size() - 1);
+    }
+
+    public int peek() {
+        return elements.get(elements.size() - 1);
+    }
+
+    public boolean empty() {
+        return elements.isEmpty();
+    }
+
+    public int getSize() {
+        return elements.size();
+    }
+}
+
+public class PrimeFactorsStack {
+
+    // Method to push smallest factors into stack
+    public static void getPrimeFactors(int number, StackOfIntegers stack) {
+
+        int factor = 2;
+
+        while (number > 1) {
+            if (number % factor == 0) {
+                stack.push(factor);
+                number /= factor;
+            } else {
+                factor++;
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+
+        java.util.Scanner input = new java.util.Scanner(System.in);
+
+        System.out.print("Enter a positive integer: ");
+        int number = input.nextInt();
+
+        StackOfIntegers stack = new StackOfIntegers();
+
+        // Store factors in increasing order in stack
+        getPrimeFactors(number, stack);
+
+        System.out.print("Prime factors in decreasing order: ");
+
+        // Pop to display in reverse order
+        while (!stack.empty()) {
+            System.out.print(stack.pop() + " ");
+        }
+
+        System.out.println();
+        input.close();
+    }
+}
