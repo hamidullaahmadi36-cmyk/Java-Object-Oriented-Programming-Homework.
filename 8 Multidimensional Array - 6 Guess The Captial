@@ -1,0 +1,65 @@
+import java.util.Scanner;
+
+public class GuessAfghanistanCapitals {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        // 34 provinces and their capitals
+        String[][] provinceCapital = {
+            {"Badakhshan", "Fayzabad"},
+            {"Badghis", "Qala-e-Naw"},
+            {"Baghlan", "Pul-e-Khumri"},
+            {"Balkh", "Mazar-i-Sharif"},
+            {"Bamyan", "Bamyan"},
+            {"Daykundi", "Nili"},
+            {"Farah", "Farah"},
+            {"Faryab", "Maymana"},
+            {"Ghazni", "Ghazni"},
+            {"Ghor", "Firuzkoh"},
+            {"Helmand", "Lashkar Gah"},
+            {"Herat", "Herat"},
+            {"Jowzjan", "Sheberghan"},
+            {"Kabul", "Kabul"},
+            {"Kandahar", "Kandahar"},
+            {"Kapisa", "Mahmud Raqi"},
+            {"Khost", "Khost"},
+            {"Kunar", "Asadabad"},
+            {"Kunduz", "Kunduz"},
+            {"Laghman", "Mehtarlam"},
+            {"Logar", "Pul-e-Alam"},
+            {"Nangarhar", "Jalalabad"},
+            {"Nimruz", "Zaranj"},
+            {"Nuristan", "Parun"},
+            {"Paktia", "Gardez"},
+            {"Paktika", "Sharana"},
+            {"Panjshir", "Bazarak"},
+            {"Parwan", "Charikar"},
+            {"Samangan", "Aybak"},
+            {"Sar-e Pol", "Sar-e Pol"},
+            {"Takhar", "Taloqan"},
+            {"Urozgan", "Tarinkot"},
+            {"Wardak", "Maidan Shar"},
+            {"Zabul", "Qalat"}
+        };
+
+        int correctCount = 0;
+
+        for (int i = 0; i < provinceCapital.length; i++) {
+            System.out.print("What is the capital of " + provinceCapital[i][0] + "? ");
+            String answer = input.nextLine();
+
+            if (answer.equalsIgnoreCase(provinceCapital[i][1])) {
+                System.out.println("Correct!\n");
+                correctCount++;
+            } else {
+                System.out.println("Wrong. The correct answer is "
+                        + provinceCapital[i][1] + ".\n");
+            }
+        }
+
+        System.out.println("You answered " + correctCount + " out of "
+                + provinceCapital.length + " correctly.");
+
+        input.close();
+    }
+}
