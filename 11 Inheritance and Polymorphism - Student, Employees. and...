@@ -1,0 +1,137 @@
+class MyDate {
+    private int year;
+    private int month;
+    private int day;
+
+    public MyDate() {
+        java.util.GregorianCalendar cal = new java.util.GregorianCalendar();
+        this.year = cal.get(java.util.GregorianCalendar.YEAR);
+        this.month = cal.get(java.util.GregorianCalendar.MONTH);
+        this.day = cal.get(java.util.GregorianCalendar.DAY_OF_MONTH);
+    }
+
+    public String toString() {
+        return year + "-" + (month + 1) + "-" + day;
+    }
+}
+
+// ================= PERSON =================
+class Person {
+    private String name;
+    private String address;
+    private String phone;
+    private String email;
+
+    public Person(String name, String address, String phone, String email) {
+        this.name = name;
+        this.address = address;
+        this.phone = phone;
+        this.email = email;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String toString() {
+        return "Person: " + name;
+    }
+}
+
+// ================= STUDENT =================
+class Student extends Person {
+
+    public static final String FRESHMAN = "Freshman";
+    public static final String SOPHOMORE = "Sophomore";
+    public static final String JUNIOR = "Junior";
+    public static final String SENIOR = "Senior";
+
+    private String status;
+
+    public Student(String name, String address, String phone, String email, String status) {
+        super(name, address, phone, email);
+        this.status = status;
+    }
+
+    public String toString() {
+        return "Student: " + getName();
+    }
+}
+
+// ================= EMPLOYEE =================
+class Employee extends Person {
+
+    private String office;
+    private double salary;
+    private MyDate dateHired;
+
+    public Employee(String name, String address, String phone, String email,
+                    String office, double salary) {
+
+        super(name, address, phone, email);
+        this.office = office;
+        this.salary = salary;
+        this.dateHired = new MyDate();
+    }
+
+    public String toString() {
+        return "Employee: " + getName();
+    }
+}
+
+// ================= FACULTY =================
+class Faculty extends Employee {
+
+    private String officeHours;
+    private String rank;
+
+    public Faculty(String name, String address, String phone, String email,
+                   String office, double salary, String officeHours, String rank) {
+
+        super(name, address, phone, email, office, salary);
+        this.officeHours = officeHours;
+        this.rank = rank;
+    }
+
+    public String toString() {
+        return "Faculty: " + getName();
+    }
+}
+
+// ================= STAFF =================
+class Staff extends Employee {
+
+    private String title;
+
+    public Staff(String name, String address, String phone, String email,
+                 String office, double salary, String title) {
+
+        super(name, address, phone, email, office, salary);
+        this.title = title;
+    }
+
+    public String toString() {
+        return "Staff: " + getName();
+    }
+}
+
+// ================= TEST PROGRAM =================
+public class TestPersonHierarchy {
+
+    public static void main(String[] args) {
+
+        Person p = new Person("Ali", "Kabul", "111", "a@x.com");
+        Student s = new Student("Sara", "Kabul", "222", "s@x.com", Student.JUNIOR);
+        Employee e = new Employee("Omar", "Kabul", "333", "e@x.com", "A1", 50000);
+        Faculty f = new Faculty("Dr. Khan", "Kabul", "444", "f@x.com",
+                "B2", 80000, "9-5", "Professor");
+        Staff st = new Staff("Hamid", "Kabul", "555", "st@x.com",
+                "C3", 30000, "Technician");
+
+        System.out.println(p);
+        System.out.println(s);
+        System.out.println(e);
+        System.out.println(f);
+        System.out.println(st);
+    }
+}
