@@ -1,0 +1,58 @@
+public class Time {
+
+    // Data fields (elapsed time since epoch)
+    private long hour;
+    private long minute;
+    private long second;
+
+    // No-arg constructor (current time)
+    public Time() {
+        this(System.currentTimeMillis());
+    }
+
+    // Constructor with elapsed time
+    public Time(long elapsedTime) {
+        setTime(elapsedTime);
+    }
+
+    // Setter for elapsed time
+    public void setTime(long elapsedTime) {
+
+        long totalSeconds = elapsedTime / 1000;
+
+        this.second = totalSeconds % 60;
+        long totalMinutes = totalSeconds / 60;
+
+        this.minute = totalMinutes % 60;
+        long totalHours = totalMinutes / 60;
+
+        this.hour = totalHours % 24;
+    }
+
+    // Getters
+    public long getHour() {
+        return hour;
+    }
+
+    public long getMinute() {
+        return minute;
+    }
+
+    public long getSecond() {
+        return second;
+    }
+
+    // Test program inside same file
+    public static void main(String[] args) {
+
+        Time t1 = new Time(); // current time
+
+        Time t2 = new Time(555550000); // example elapsed time
+
+        System.out.println("Current time:");
+        System.out.println(t1.getHour() + ":" + t1.getMinute() + ":" + t1.getSecond());
+
+        System.out.println("\nElapsed time 555550000 ms:");
+        System.out.println(t2.getHour() + ":" + t2.getMinute() + ":" + t2.getSecond());
+    }
+}
