@@ -1,0 +1,36 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class SumArrayList {
+
+    // Method to sum all elements
+    public static double sum(ArrayList<Double> list) {
+
+        double total = 0;
+
+        for (double value : list) {
+            total += value;
+        }
+
+        return total;
+    }
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        ArrayList<Double> list = new ArrayList<>();
+
+        System.out.println("Enter 5 numbers:");
+
+        for (int i = 0; i < 5; i++) {
+            System.out.print("Number " + (i + 1) + ": ");
+            list.add(input.nextDouble());
+        }
+
+        double result = sum(list);
+
+        System.out.println("Sum = " + result);
+
+        input.close();
+    }
+}
