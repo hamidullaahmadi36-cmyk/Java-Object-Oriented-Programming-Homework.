@@ -1,0 +1,53 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+// Stack implemented using inheritance
+class MyStack<E> extends ArrayList<E> {
+
+    public void push(E value) {
+        add(value);
+    }
+
+    public E pop() {
+        return remove(size() - 1);
+    }
+
+    public E peek() {
+        return get(size() - 1);
+    }
+
+    public boolean empty() {
+        return size() == 0;
+    }
+
+    public int getSize() {
+        return size();
+    }
+}
+
+public class TestMyStack {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        MyStack<String> stack = new MyStack<>();
+
+        System.out.println("Enter 5 strings:");
+
+        // Read 5 strings
+        for (int i = 0; i < 5; i++) {
+            System.out.print("String " + (i + 1) + ": ");
+            stack.push(input.nextLine());
+        }
+
+        System.out.println("\nReversed order:");
+
+        // Pop and display in reverse order
+        while (!stack.empty()) {
+            System.out.println(stack.pop());
+        }
+
+        input.close();
+    }
+}
