@@ -45,7 +45,7 @@ public class WeeklyHours {
             }
         }
 
-        // Display employees in decreasing order
+
         System.out.println("Employee\tTotal Hours");
         for (int i = 0; i < totalHours.length; i++) {
             System.out.println("Employee " + totalHours[i][0]
